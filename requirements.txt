@@ -1,0 +1,18 @@
+torch==2.6.0+cu118
+torchvision==0.21.0+cu118
+torchaudio==2.6.0+cu118
+geoopt @ git+https://github.com/geoopt/geoopt.git@1542ceedd81aa6ba6bbd95bf4c692922275d967f
+numpy==1.26.4
+tqdm==4.67.1
+Pillow==11.0.0
+POT
+matplotlib==3.10.1
+scikit-image==0.25.2
+scikit-learn==1.6.1
+scipy==1.13.1
+
+
+
+
+
+
