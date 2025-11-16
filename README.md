@@ -164,3 +164,13 @@ checkpoints_[method]_[variant]/
 - `unlearn_utils.py`: Unlearning-specific utilities
 - `lora.py`: LoRA implementation
 - `lora_hyp.py`: Hyperbolic LoRA implementation
+
+
+## Acknowledgements
+
+This project draws inspiration from the following excellent works and is grateful to the authors for releasing their code:
+
+- [Hyperbolic Busemann Learning](https://github.com/MinaGhadimiAtigh/Hyperbolic-Busemann-Learning)
+- [ScissorHands](https://github.com/JingWu321/Scissorhands/tree/master)
+- [GS-LoRA](https://github.com/bjzhb666/GS-LoRA)
+
