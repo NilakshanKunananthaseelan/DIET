@@ -1,0 +1,366 @@
+\documentclass[portrait,a0paper,fontscale=0.292]{baposter}
+
+\usepackage[vlined]{algorithm2e}
+\usepackage{times}
+\usepackage{calc}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{relsize}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage{enumitem}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\graphicspath{{images/}}
+
+\setlist[itemize]{leftmargin=*,nosep}
+ \setlength{\columnsep}{0.7em}
+ \setlength{\columnseprule}{0mm}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsthm}
+\usepackage{adjustbox}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{siunitx}
+\usepackage{babel}
+\usepackage{pifont}
+
+\usepackage[most]{tcolorbox} % Loads tcolorbox with common libraries, including gradients
+\usepackage{xcolor} % Ensure xcolor is loaded
+
+% Define a custom color if you want something specific, e.g., a lighter blue
+\definecolor{lightbluegradient}{rgb}{0.8,0.9,1.0} % Light blue for start of gradient
+\definecolor{darkbluegradient}{rgb}{0.6,0.8,0.9}  % Slightly darker blue for end of gradient
+
+
+%------------------------COMMANDS-----------------------------%
+\RequirePackage{xspace}
+\makeatletter
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+  \definecolor{myviolet}{RGB}{148, 0, 211}   % For the Busemann function
+\definecolor{myred}{RGB}{220, 20, 60}      % For the Limit action
+\definecolor{myorange}{RGB}{255, 140, 0}   % For the Distance function
+\definecolor{myteal}{RGB}{0, 150, 136}     % For the Ray/Path
+\definecolor{myblue}{RGB}{0, 100, 255}     % For the Point z
+\definecolor{mymagenta}{RGB}{255, 0, 255}  % For the 
+  
+
+\def\ie{\emph{i.e}\onedot} 
+\newcommand{\vtheta}{{\bm{\theta}}}
+\newcommand{\bmrm}[1]{\bm{\mathrm{#1}}}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Save space in lists. Use this after the opening of the list
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \newcommand{\compresslist}{%
+ \setlength{\itemsep}{0pt}%
+ \setlength{\parskip}{0pt}%
+ \setlength{\parsep}{0pt}%
+ }
+\renewcommand{\rmdefault}{ptm} % Arial
+\renewcommand{\sfdefault}{ptm} % Arial
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin of Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Here starts the poster
+%%---------------------------------------------------------------------------
+%% Format it to your taste with the options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{poster}{
+ % Show grid to help with alignment
+ grid=false,
+ columns=5,
+ % Column spacing
+ colspacing=0.7em,
+ % Color style
+ headerColorOne=cyan!20!white!90!black,
+ borderColor=cyan!30!white!90!black,
+ % Format of textbox
+ textborder=faded,
+ % Format of text header
+ headerborder=open,
+ headershape=roundedright,
+ headershade=plain,
+ background=none,
+ bgColorOne=cyan!10!white,
+ headerheight=0.09\textheight}
+ % Eye Catcher
+ {
+      \includegraphics[width=0.2\linewidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/Monash_University_logo.png}
+      % \makebox[0.01\textwidth]{} 
+      
+ }
+ % Title
+ {\sc\huge\bf DIET: Machine Unlearning on a Data-Diet}
+ % Authors
+ {\vspace{0.3em} Nilakshan Kunananthaseelan, Jing Wu, \\Trung Le, Gholamreza Haffari, Mehrtash Harandi\\
+ {Monash University, Australia\\[0.2em] }}
+ % University logo
+ {
+    \begin{tabular}{r}
+        \includegraphics[width=0.2\linewidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/aaai.pdf}
+    \end{tabular}
+
+ %     \begin{tabular}{c}
+ %        \includegraphics[width=0.05\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/qr.png}
+ %    \end{tabular}
+ 
+ }
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Now define the boxes that make up the poster
+%%%---------------------------------------------------------------------------
+%%% Each box has a name and can be placed absolutely or relatively.
+%%% The only inconveniin betweenhat you can only specify a relative position 
+%%% towards an already declared box. So if you have a box attached to the 
+%%% bottom, one to the top and a third one which should be inbetween, you 
+%%% have to specify the top and bottom boxes before you specify the middle 
+%%% box.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{\bf\color{blue} Why Retain-Free for VLMs?}{name=contribution,column=0,row=0,span=3}{
+    % \textbf{\color{blue}Challenge:} Machine Unlearning (MUL) is crucial for data governance and privacy compliance.
+    % \\
+    % \textbf{\color{blue}Limitations:} 
+    % \begin{itemize}
+    % \item Most effective MUL methods rely on \textbf{Retain Data} to reduce catastrophic forgetting. This is \textbf{problematic} (costly, privacy risks, scalability \& training).
+    % \item Unlearning in \textbf{Vision-Language Models (VLMs)} (e.g., CLIP) is \textbf{extra challenging} due to \textit{highly entangled multimodal embeddings.}
+    % \end{itemize}
+
+    \begin{itemize}
+    \item \textbf{\color{blue}Challenge:} Machine Unlearning (MUL) is crucial for data governance and privacy compliance.
+    % \vspace{0.1em}
+    \item \textbf{\color{blue}Limitations:}
+    \begin{itemize}
+        \item Rely on \textbf{Retain Data} to reduce catastrophic forgetting.
+        \item This is costly, risks privacy breaches, and struggles to scale.
+    \end{itemize}
+    \vspace{0.5em}
+    \item \textbf{\color{blue}VLM-Specific 
+    Challenge:} Unlearning in \textbf{Vision-Language Models (VLMs)} (e.g., CLIP) is extra challenging due to \textit{highly entangled multimodal embeddings.}
+
+    \begin{center}
+        
+        \centering
+        \includegraphics[width=0.3\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/clip.pdf}
+        
+    \end{center}
+    
+
+\end{itemize}
+    \item \textbf{\color{blue} Language as Retain-Free Solution for VLMs.} Use {text prototypes as a retain-free mechanism} to \textbf{\color{ForestGreen}guide unlearning} - no need for image–text retain pairs.
+    \vspace{0.5em}
+ 
+    \textbf{\color{blue}Key Contributions:}
+     
+    \begin{itemize}
+    
+        \item We propose {{DIET}}: A {\textbf{principled, retain-data-free}} unlearning method for VLMs.
+        \vspace{0.5em}
+        \item Unlearning by achieving \textbf{asymptotically negligible influence} of forget data via \textbf{hyperbolic geometry} (Poincaré Ball Model)
+        \vspace{0.5em}
+        \textbf{\color{BrickRed}effectively PUSHING the concept to infinity.}
+        \item Achieves \textbf{comparable utility to data-heavy methods} while being \textbf{retain-free}, with \textbf{117.5\% utility improvement} over best retain-free baselines.
+    \end{itemize}  
+}
+
+\headerbox{\bf\color{blue}  The Geometry of Forgetfulness}{name=formulation,column=3,span=2}{
+    % We leverage the geometry of hyperbolic space to achieve asymptotic unlearning.
+\vspace{0.5em}
+
+
+\textbf{\color{blue}Hyperbolic Space for Retain-Free Unlearning:
+}    \begin{itemize}
+        \item \textbf{Goal:} 
+        % Push {``{forget}''} embeddings to \textbf{infinity} (out of model's reach).
+        To  {``{forget}''}, the model must push unwanted embeddings far away-ideally to \textbf{infinity}, where they have no semantic influence.
+
+        \item \textbf{Euclidean ($\mathbb{R}^n$)}: ``{Infinity}'' is ill-defined; no tractable distance measure to infinity.
+        \item \textbf{\color{blue}Poincar\'e Ball Model $(\mathbb{B}^n)$:}
+The canonical model of Hyperbolic space ($\mathbb{H}^n), \mathbb{B}^n = \{\mathbf{z} \in \mathbb{R}^n : \|\bmrm{z}\| < 1\}$ where the unit sphere ($\partial\mathbb{B}$) serves as the \textbf{ideal boundary, representing hyperbolic infinity}.
+    \end{itemize}
+    \vspace{0.5em}
+    
+  
+
+\vspace{0.5em}
+  % \textbf{\color{blue}Busemann Function ($\delta_{\bmrm{p}}(\bmrm{z})$):}
+  
+  % Measures the directional distance to hyperbolic infinity along the geodesic path $\gamma_{\bmrm{p}}$ connecting $\bmrm{z} \in \mathbb{B}^n$  to an ideal boundary point $\bmrm{p} \in \partial\mathbb{B}^n$.
+
+
+% \begin{equation}
+%     \delta_{\bmrm{p}}(\bmrm{z}) = \lim_{t\to\infty}(d_{\mathbb{B}}(\gamma_{\bmrm{p}}(t), \bmrm{z}) - t),
+%     \label{eqn:busemann}
+% \end{equation}
+% where $d_{\mathbb{B}}\big(\gamma_{\bmrm{p}}(0),\,\gamma_{\bmrm{p}}(t)\big)=t$.
+
+% % \textbf{\color{blue} Intuition:} It quantifies `{how far}' an embedding $\bmrm{z}$ is from effectively reaching the infinite boundary in the direction of $\bmrm{p}$.
+
+
+
+
+\textbf{\color{blue}Busemann Function ($\delta_{\bmrm{p}}(\bmrm{z})$):}
+  Measures the {hyperbolic distance} from  $\bmrm{z} \in \mathbb{B}^n$ to points at the boundary $\bmrm{p} \in \partial\mathbb{B}^n$.
+  
+
+
+\begin{equation}
+    \textcolor{myviolet}{\delta_{\bmrm{p}}(\bmrm{z})} =
+    \textcolor{myred}{\lim_{t\to\infty}}
+    \left(
+        \textcolor{myorange}{d_{\mathbb{B}}(\textcolor{myteal}{\gamma_{\bmrm{p}}(t)}, \textcolor{myblue}{\bmrm{z}})}
+        - \textcolor{Magenta}{t}
+    \right)
+\end{equation}
+The \textbf{\textcolor{myviolet}{Busemann distance}} tells us, \textbf{\textcolor{myred}{at the infinite boundary}}, how much ``{excess}'' \textbf{\textcolor{myorange}{hyperbolic distance}} remains between an \textbf{\textcolor{myblue}{interior point $\in \mathbb{B}^n$} } and its \textbf{\textcolor{myteal}{ideal path to infinity }}, after normalizing for the \textbf{\textcolor{RubineRed}{path length already traversed}}.
+
+\vspace{1em}
+ \textbf{\color{blue}Unlearning Action:} Minimizing $\delta_p(\bmrm{z})$ forcefully drives the forget embedding $\bmrm{z}$ along a geodesic path \textbf{directly towards $\bmrm{p}$ at infinity ($\partial\mathbb{B}$).}
+    
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{\bf\color{blue} The DIET Framework}{name=method,column=0,below=contribution,span=5}{
+\begin{minipage}[t]{0.52\textwidth}
+
+
+
+%     \textbf{\color{blue}Geodesic Transport:}
+% Leverages \textbf{Busemann distance} to guide forget embeddings along \textbf{hyperbolic geodesics} towards the \textbf{boundar}y ($\partial\mathbb{B}$, i.e., infinity).
+% \vspace{0.5em}
+
+    \textbf{\color{blue}Semantic Erasure}
+    As embeddings approach the boundary, \textbf{their influence becomes infinitely distant} from interior points, effectively \textbf{erasing semantic contribution}.
+
+    \vspace{0.5em}
+    \begin{center}
+     \includegraphics[width=\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/diet_arch.pdf}
+    \end{center}
+    \vspace{-0.8em}
+    
+
+    % \textbf{\color{blue}Guiding the Forgetting:} 
+    % \begin{itemize}
+    %     \item Optimal Transport (OT) finds an \textbf{optimal, adaptive assignment} between forget image embeddings and the set of mismatched text prototypes.
+    %     \item \textbf{Busemann function} guides forget embeddings along \textbf{hyperbolic geodesics} towards the boundary.
+    % \end{itemize}
+    \textbf{\color{blue}Guiding the Forgetting:}
+\begin{itemize}
+    \item \textit{\color{blue}Target Direction (Language):} Text prototypes (our retain-free signal) \textbf{define the ideal boundary point} $\bmrm{p}$ (infinity) for the concept to be forgotten.
+    \item \textit{\color{blue}Optimal Transport (OT):} Finds \textbf{an optimal, adaptive assignment} between forget image embeddings and the set of mismatched text prototypes. This initiates the push.
+    \item \textit{\color{blue}Busemann Function:} Actively steers forget embeddings along the defined \textbf{hyperbolic geodesics} towards the boundary, based on the OT assignment.
+    
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.44\textwidth}
+\textbf{\color{blue} The Road to Infinity:} 
+    \begin{center}
+        \includegraphics[width=\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/flow2.pdf}
+    \end{center}
+        \textbf{\color{blue}Busemann Loss:}
+        \begin{center}
+        \vspace{-0.5em}
+        \includegraphics[width=0.9\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/busemann_loss.pdf}
+        \end{center}
+
+
+\begin{center}
+        \includegraphics[width=0.8\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/rep.pdf}
+\end{center}
+
+\end{minipage}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{\bf\color{blue} Results}{name=results,column=0,below=method,row=0,span=5}{
+    
+    \begin{minipage}[t]{0.49\textwidth}
+    
+        \textbf{\color{blue}Quantitative Results:} DIET achieves \textbf{8.06\% average forget accuracy} and \textbf{69.04\% utility preservation} using only minimal forget samples (16 per concept).
+        
+        \begin{center}
+            % \includegraphics[width=0.6\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/forget_vs_test_accuracy.pdf}
+            \includegraphics[width=\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/table.pdf}
+        \end{center}
+
+        \small{$^*$ indicates performance without using a retain dataset.}
+
+         % --- Two inner minipages for side-by-side images ---
+        \begin{minipage}[t]{0.49\linewidth}
+            \begin{center}
+               
+                 \includegraphics[width=\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/loss.pdf}
+               
+            \end{center}
+        \end{minipage}
+        \hfill % Horizontal fill to push the minipages apart
+        \begin{minipage}[t]{0.49\linewidth}
+            \begin{center}
+                % Plot 2 (e.g., D_t comparison)
+                 \includegraphics[width=\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/prototype.pdf}
+                
+            \end{center}
+        \end{minipage}
+        % --- End side-by-side images ---
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.49\textwidth}
+
+    \textbf{\color{blue}Scalable and Generalizable Unlearning:}
+        
+
+        \begin{minipage}[t]{0.49\linewidth}
+            \begin{center}
+                 \includegraphics[width=\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/ablation2.pdf}
+               
+            \end{center}
+        \end{minipage}
+        \hfill % Horizontal fill to push the minipages apart
+        \begin{minipage}[t]{0.49\linewidth}
+            \begin{center}
+                % Plot 2 (e.g., D_t comparison)
+                 \raisebox{1cm}{\includegraphics[width=0.9\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/ablation1.pdf}}
+                
+            \end{center}
+        \end{minipage}
+    
+        \textbf{\color{blue}Visualizing the Forgetting Effect:}
+        \vspace{-0.5em}
+        \begin{center}
+            \includegraphics[width=0.9\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/latent.pdf}
+            
+        \end{center}
+        % \vspace{-0.9em}
+        % \begin{center}
+        %     \includegraphics[width=0.75\textwidth]{AAAI2026/main_technical_conference_9407@AAAI2026/images/alignment.png}
+        % \end{center}
+    \end{minipage}
+
+    %\vspace{0.5em}   
+}
+
+
+\end{poster}
+\end{document}
