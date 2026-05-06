@@ -203,7 +203,7 @@ def run_lora(
     # Select cost and OT functions
     cost_type = getattr(args, "cost_type", "busemann")
     if cost_type == "busemann":
-        cost_fn = busemann_cost_matrix
+         = busemann_cost_matrixcost_fn
     else:
         raise ValueError(f"Unknown cost_type: {cost_type}")
 
